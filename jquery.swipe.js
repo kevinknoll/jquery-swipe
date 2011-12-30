@@ -20,6 +20,9 @@
     /*private methods*/
     var helpers = {
       onTouchMove: function(e) {
+        if (self.settings.prevent_default) {
+          e.preventDefault();
+        }
         /*grab the original event (jquery's event doesn't contain direct access to the touches)*/
         e = e.originalEvent;
         /*if swiping has started*/
@@ -74,6 +77,7 @@
   $.fn.swipe.defaults = {
     min_x: 20,
     min_y: 20,
+    prevent_default: true,
     swipe: function(l,r,u,d){}
   };
   $.fn.swipe.settings = {};
